@@ -1,0 +1,248 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: #000;
+  font-family: Genos, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 4rem;
+  overflow: hidden;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.25rem;
+  width: min(92vw, 42rem);
+  opacity: 0;
+  animation: fade-up 0.8s ease 0.15s forwards;
+}
+
+.testimonials {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem 2rem;
+  background: #fff;
+  opacity: 0;
+  animation: fade-in 0.7s ease forwards;
+}
+
+.logo {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  transition: opacity 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  opacity: 0.45;
+  outline: none;
+}
+
+.tagline {
+  font-family: Inter, sans-serif;
+  width: 100%;
+  text-align: left;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #000;
+}
+
+.subhead {
+  font-family: Inter, sans-serif;
+  width: 100%;
+  max-width: 28rem;
+  text-align: left;
+  font-weight: 400;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: #000;
+  opacity: 0.55;
+  margin-top: -1.1rem;
+}
+
+#partner {
+  appearance: none;
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.95rem 2.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#partner:hover,
+#partner:focus-visible {
+  background: #fff;
+  color: #000;
+  outline: none;
+}
+
+#partner:active {
+  transform: scale(0.97);
+}
+
+.testimonials {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.testimonials blockquote p {
+  font-weight: 300;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+}
+
+.testimonials footer {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.85rem;
+}
+
+.testimonials cite {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+
+.testimonials footer span {
+  font-weight: 300;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  opacity: 0.55;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  header,
+  .hero-copy {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 1.25rem;
+  }
+
+  nav {
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-copy {
+    width: min(92vw, 42rem);
+    gap: 1.75rem;
+  }
+
+  .tagline {
+    letter-spacing: -0.02em;
+  }
+
+  .testimonials {
+    padding: 3rem 1.25rem 4.5rem;
+    gap: 2.75rem;
+  }
+}
