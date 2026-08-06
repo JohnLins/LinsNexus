@@ -50,11 +50,6 @@ body {
   animation: fade-up 0.8s ease 0.15s forwards;
 }
 
-.testimonials {
-  position: relative;
-  z-index: 1;
-}
-
 header {
   position: fixed;
   top: 0;
@@ -151,42 +146,248 @@ nav a:focus-visible {
   transform: scale(0.97);
 }
 
-.testimonials {
-  max-width: 40rem;
-  margin: 0 auto;
-  padding: 4rem 2rem 6rem;
+.integrations {
+  position: relative;
+  z-index: 1;
+  min-height: min(92vh, 52rem);
   display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  overflow: hidden;
+  background: #fff;
+}
+
+#platform-cubes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.integrations-copy {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 28rem);
+  text-align: center;
+  pointer-events: none;
+}
+
+.integrations-copy h2 {
+  font-family: Inter, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.85rem, 4.2vw, 2.85rem);
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: #000;
+}
+
+.integrations-copy p {
+  margin-top: 1.15rem;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.9vw, 1.15rem);
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  color: #000;
+  opacity: 0.55;
+}
+
+.brands {
+  position: relative;
+  z-index: 1;
+  padding: 4.5rem 2rem 5rem;
+  background: #fff;
+}
+
+.brands-inner {
+  width: min(92vw, 52rem);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.brands h2 {
+  font-family: Inter, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.65rem, 3.6vw, 2.35rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #000;
+}
+
+.brands-inner > p {
+  margin-top: 0.75rem;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.7vw, 1.1rem);
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  color: #000;
+  opacity: 0.5;
+}
+
+.brands-grid {
+  list-style: none;
+  margin: 2.75rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 2.5vw, 2rem);
+  align-items: center;
+  justify-items: center;
+}
+
+.brands-grid li {
+  width: 100%;
+  max-width: 8.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brands-grid img {
+  width: 100%;
+  height: auto;
+  max-height: 5.5rem;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.72;
+  transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+.brands-grid img:hover,
+.brands-grid img:focus-visible {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+.testimonials {
+  position: relative;
+  z-index: 1;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 4.5rem 2rem 6rem;
+}
+
+.testimonials-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.testimonials-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.testimonials-track:active {
+  cursor: grabbing;
+}
+
+.testimonial {
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 0 0.25rem;
 }
 
 .testimonials blockquote p {
-  font-weight: 300;
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-  letter-spacing: 0.02em;
-  line-height: 1.55;
+  font-family: Lora, Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  letter-spacing: 0.005em;
+  line-height: 1.65;
+  color: #1a1a1a;
 }
 
 .testimonials footer {
-  margin-top: 1.25rem;
+  margin-top: 1.75rem;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.5rem 0.85rem;
+  font-family: Inter, sans-serif;
 }
 
 .testimonials cite {
   font-style: normal;
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
 }
 
 .testimonials footer span {
-  font-weight: 300;
-  font-size: 0.9rem;
-  letter-spacing: 0.06em;
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  opacity: 0.5;
+}
+
+.testimonials-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.testimonials-nav {
+  appearance: none;
+  background: none;
+  border: none;
+  color: #000;
+  font-family: Inter, sans-serif;
+  font-size: 1.35rem;
+  line-height: 1;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
   opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+
+.testimonials-nav:hover,
+.testimonials-nav:focus-visible {
+  opacity: 1;
+  outline: none;
+}
+
+.testimonials-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.testimonials-dot {
+  appearance: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #000;
+  opacity: 0.2;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.testimonials-dot[aria-selected="true"] {
+  opacity: 0.85;
+  transform: scale(1.15);
+}
+
+.testimonials-dot:hover,
+.testimonials-dot:focus-visible {
+  opacity: 0.55;
+  outline: none;
+}
+
+.testimonials-dot[aria-selected="true"]:hover,
+.testimonials-dot[aria-selected="true"]:focus-visible {
+  opacity: 0.85;
 }
 
 @keyframes fade-in {
@@ -216,6 +417,10 @@ nav a:focus-visible {
     animation: none;
     opacity: 1;
   }
+
+  .testimonials-track {
+    transition: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -243,6 +448,32 @@ nav a:focus-visible {
 
   .testimonials {
     padding: 3rem 1.25rem 4.5rem;
-    gap: 2.75rem;
+  }
+
+  .testimonials-controls {
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+
+  .integrations {
+    min-height: min(88vh, 40rem);
+    padding: 3.5rem 1.25rem;
+  }
+
+  .integrations-copy {
+    width: min(92vw, 22rem);
+  }
+
+  .brands {
+    padding: 3.25rem 1.25rem 4rem;
+  }
+
+  .brands-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.35rem 1rem;
+  }
+
+  .brands-grid li {
+    max-width: 7rem;
   }
 }

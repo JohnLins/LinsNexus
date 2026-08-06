@@ -6,7 +6,7 @@
   <title>Lins Nexus</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Genos:wght@100..900&family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Genos:wght@100..900&family=Inter:wght@400;700;800;900&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -28,39 +28,87 @@
     </div>
   </section>
 
-  <section class="testimonials" id="about" aria-label="Testimonials">
-    <blockquote>
-      <p>“John affiliated me with companies he would take onto himself to contact, and negotiate with personally, earning me generous sponsorships which continue to bolster my revenue to this day, always keeping me updated on all matters from payouts, to potential new sponsorships, and revenue generated day by day, ensuring I could keep all important details in my field of view while I worked on creating more content.”</p>
-      <footer>
-        <cite>Dean Moser</cite>
-        <span>Monsieur Z</span>
-      </footer>
-    </blockquote>
+  <section class="integrations" id="integrations" aria-label="Influencer-led integrations">
+    <canvas id="platform-cubes" aria-hidden="true"></canvas>
+    <div class="integrations-copy">
+      <h2>Influencer-led integrations boost brand trust</h2>
+      <p>When creators speak to audiences who already believe them, brands inherit that credibility across every platform that matters.</p>
+    </div>
+  </section>
 
-    <blockquote>
-      <p>“John you're amazing man. Thank you.”</p>
-      <footer>
-        <cite>Curtis Richardson</cite>
-        <span>Curt Richy</span>
-      </footer>
-    </blockquote>
+  <section class="brands" id="brands" aria-label="Brands we've worked with">
+    <div class="brands-inner">
+      <h2>Brands we've worked with</h2>
+      <p>A scaled network of sponsors — many recurring.</p>
+      <ul class="brands-grid">
+        <li><img src="brands/dashlane.png" alt="Dashlane" loading="lazy" /></li>
+        <li><img src="brands/nordvpn.png" alt="NordVPN" loading="lazy" /></li>
+        <li><img src="brands/dollar-shave-club.png" alt="Dollar Shave Club" loading="lazy" /></li>
+        <li><img src="brands/brilliant.png" alt="Brilliant" loading="lazy" /></li>
+        <li><img src="brands/wargaming.png" alt="Wargaming" loading="lazy" /></li>
+        <li><img src="brands/hawthorne.webp" alt="Hawthorne" loading="lazy" /></li>
+        <li><img src="brands/firecrawl-wordmark.png" alt="Firecrawl" loading="lazy" /></li>
+        <li><img src="brands/dittoai_logo.jpeg" alt="Ditto AI" loading="lazy" /></li>
+        <li><img src="brands/weshare.webp" alt="WeShare" loading="lazy" /></li>
+        <li><img src="brands/moss.png" alt="Mossy Oak" loading="lazy" /></li>
+        <li><img src="brands/zo.png" alt="Zo" loading="lazy" /></li>
+        <li><img src="brands/gjsl.png" alt="Brand partner" loading="lazy" /></li>
+        <li><img src="brands/wtsl.png" alt="Brand partner" loading="lazy" /></li>
+        <li><img src="brands/vtsl.png" alt="Brand partner" loading="lazy" /></li>
+      </ul>
+    </div>
+  </section>
 
-    <blockquote>
-      <p>“It has been an absolute pleasure working with you on the creation of promotional content for Dashlane. We appreciate your time and hard work and look forward to working with you in the future!”</p>
-      <footer>
-        <cite>Dashlane, Inc</cite>
-      </footer>
-    </blockquote>
+  <section class="testimonials" id="about" aria-roledescription="carousel" aria-label="Testimonials">
+    <div class="testimonials-viewport">
+      <div class="testimonials-track">
+        <blockquote class="testimonial is-active" data-index="0">
+          <p>“John affiliated me with companies he would take onto himself to contact, and negotiate with personally, earning me generous sponsorships which continue to bolster my revenue to this day, always keeping me updated on all matters from payouts, to potential new sponsorships, and revenue generated day by day, ensuring I could keep all important details in my field of view while I worked on creating more content.”</p>
+          <footer>
+            <cite>Dean Moser</cite>
+            <span>Monsieur Z</span>
+          </footer>
+        </blockquote>
 
-    <blockquote>
-      <p>“Hey John! Thanks ... This is great, good job.”</p>
-      <footer>
-        <cite>Gil Ferraz</cite>
-        <span>General Knowledg.</span>
-      </footer>
-    </blockquote>
+        <blockquote class="testimonial" data-index="1" inert>
+          <p>“John you're amazing man. Thank you.”</p>
+          <footer>
+            <cite>Curtis Richardson</cite>
+            <span>Curt Richy</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial" data-index="2" inert>
+          <p>“It has been an absolute pleasure working with you on the creation of promotional content for Dashlane. We appreciate your time and hard work and look forward to working with you in the future!”</p>
+          <footer>
+            <cite>Dashlane, Inc</cite>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial" data-index="3" inert>
+          <p>“Hey John! Thanks ... This is great, good job.”</p>
+          <footer>
+            <cite>Gil Ferraz</cite>
+            <span>General Knowledg.</span>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="testimonials-controls">
+      <button type="button" class="testimonials-nav" id="testimonial-prev" aria-label="Previous testimonial">
+        <span aria-hidden="true">←</span>
+      </button>
+      <div class="testimonials-dots" role="tablist" aria-label="Choose testimonial"></div>
+      <button type="button" class="testimonials-nav" id="testimonial-next" aria-label="Next testimonial">
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
   </section>
 
   <script src="script.js"></script>
+  <script src="vendor/three.min.js"></script>
+  <script src="logos-data.js"></script>
+  <script src="cubes.js"></script>
 </body>
 </html>

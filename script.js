@@ -3,6 +3,105 @@ document.getElementById("partner").addEventListener("click", () => {
 });
 
 (() => {
+  const root = document.querySelector(".testimonials");
+  if (!root) return;
+
+  const track = root.querySelector(".testimonials-track");
+  const slides = Array.from(root.querySelectorAll(".testimonial"));
+  const prevBtn = document.getElementById("testimonial-prev");
+  const nextBtn = document.getElementById("testimonial-next");
+  const dotsWrap = root.querySelector(".testimonials-dots");
+  if (!track || !slides.length || !prevBtn || !nextBtn || !dotsWrap) return;
+
+  let index = 0;
+  let startX = 0;
+  let deltaX = 0;
+  let dragging = false;
+
+  const dots = slides.map((_, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "testimonials-dot";
+    btn.setAttribute("role", "tab");
+    btn.setAttribute("aria-label", `Show testimonial ${i + 1}`);
+    btn.setAttribute("aria-selected", i === 0 ? "true" : "false");
+    btn.addEventListener("click", () => goTo(i));
+    dotsWrap.appendChild(btn);
+    return btn;
+  });
+
+  function goTo(next) {
+    index = (next + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    slides.forEach((slide, i) => {
+      const active = i === index;
+      slide.classList.toggle("is-active", active);
+      if (active) slide.removeAttribute("inert");
+      else slide.setAttribute("inert", "");
+    });
+    dots.forEach((dot, i) => {
+      dot.setAttribute("aria-selected", i === index ? "true" : "false");
+    });
+  }
+
+  prevBtn.addEventListener("click", () => goTo(index - 1));
+  nextBtn.addEventListener("click", () => goTo(index + 1));
+
+  root.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      goTo(index - 1);
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      goTo(index + 1);
+    }
+  });
+
+  track.addEventListener(
+    "pointerdown",
+    (e) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      dragging = true;
+      startX = e.clientX;
+      deltaX = 0;
+      track.setPointerCapture(e.pointerId);
+      track.style.transition = "none";
+    },
+    { passive: true }
+  );
+
+  track.addEventListener(
+    "pointermove",
+    (e) => {
+      if (!dragging) return;
+      deltaX = e.clientX - startX;
+      const width = track.clientWidth || 1;
+      const offset = -index * 100 + (deltaX / width) * 100;
+      track.style.transform = `translateX(${offset}%)`;
+    },
+    { passive: true }
+  );
+
+  function endDrag(e) {
+    if (!dragging) return;
+    dragging = false;
+    track.style.transition = "";
+    const threshold = Math.min(80, (track.clientWidth || 320) * 0.18);
+    if (deltaX > threshold) goTo(index - 1);
+    else if (deltaX < -threshold) goTo(index + 1);
+    else goTo(index);
+    try {
+      track.releasePointerCapture(e.pointerId);
+    } catch (_) {}
+  }
+
+  track.addEventListener("pointerup", endDrag);
+  track.addEventListener("pointercancel", endDrag);
+
+  goTo(0);
+})();
+
+(() => {
   const RADIUS = 2;
   const SPAWN_RATE = 50;
   const ELASTICITY = 0.5;
@@ -12,7 +111,7 @@ document.getElementById("partner").addEventListener("click", () => {
   const SPAWN_Y_MAX = 720;
   const COLOR_LEFT = "#000000";
   const COLOR_RIGHT = "red";
-  const TEXT_SELECTORS = ".tagline";
+  const TEXT_SELECTORS = ".tagline, .subhead";
 
   const canvas = document.getElementById("particles");
   const hero = document.querySelector(".hero");
