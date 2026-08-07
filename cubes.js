@@ -265,6 +265,8 @@
   if (!section || !canvas) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+  const isMobile = () => mobileQuery.matches;
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -287,8 +289,10 @@
   let raf = 0;
   let running = false;
   let t0 = performance.now();
+  let ready = false;
 
   function resize() {
+    if (isMobile()) return;
     const w = section.clientWidth;
     const h = section.clientHeight;
     if (w < 1 || h < 1) return;
@@ -309,6 +313,8 @@
 
   function frame(now) {
     raf = requestAnimationFrame(frame);
+    if (isMobile()) return;
+
     const t = (now - t0) / 1000;
     const amp = reduceMotion ? AMPLITUDE * 0.12 : AMPLITUDE;
 
@@ -324,7 +330,7 @@
   }
 
   function start() {
-    if (running) return;
+    if (!ready || isMobile() || running) return;
     running = true;
     t0 = performance.now();
     raf = requestAnimationFrame(frame);
@@ -334,6 +340,15 @@
     if (!running) return;
     running = false;
     cancelAnimationFrame(raf);
+    renderer.clear();
+  }
+
+  function syncMobile() {
+    if (isMobile()) stop();
+    else {
+      resize();
+      start();
+    }
   }
 
   Promise.all(
@@ -349,9 +364,21 @@
       return cube;
     });
 
-    resize();
-    window.addEventListener("resize", resize);
-    start();
+    ready = true;
+    window.addEventListener("resize", () => {
+      resize();
+      syncMobile();
+    });
+    if (mobileQuery.addEventListener) {
+      mobileQuery.addEventListener("change", syncMobile);
+    } else if (mobileQuery.addListener) {
+      mobileQuery.addListener(syncMobile);
+    }
+
+    if (!isMobile()) {
+      resize();
+      start();
+    }
 
     if ("IntersectionObserver" in window) {
       const io = new IntersectionObserver(

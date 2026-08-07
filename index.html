@@ -12,10 +12,22 @@
 <body>
   <header>
     <a class="logo" href="/">Lins Nexus</a>
-    <nav>
-      <a href="#about">About</a>
+    <button
+      type="button"
+      class="nav-toggle"
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-label="Open menu"
+    >
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <nav id="site-nav" class="site-nav" hidden>
+      <a href="#about">Thesis</a>
       <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact">Admin</a>
     </nav>
   </header>
 
@@ -36,26 +48,27 @@
     </div>
   </section>
 
-  <section class="brands" id="brands" aria-label="Brands we've worked with">
+  <section class="brands" id="brands" aria-roledescription="carousel" aria-label="Brands we've worked with">
     <div class="brands-inner">
       <h2>Brands we've worked with</h2>
-      <p>A scaled network of sponsors — many recurring.</p>
-      <ul class="brands-grid">
-        <li><img src="brands/dashlane.png" alt="Dashlane" loading="lazy" /></li>
-        <li><img src="brands/nordvpn.png" alt="NordVPN" loading="lazy" /></li>
-        <li><img src="brands/dollar-shave-club.png" alt="Dollar Shave Club" loading="lazy" /></li>
-        <li><img src="brands/brilliant.png" alt="Brilliant" loading="lazy" /></li>
-        <li><img src="brands/wargaming.png" alt="Wargaming" loading="lazy" /></li>
-        <li><img src="brands/hawthorne.webp" alt="Hawthorne" loading="lazy" /></li>
-        <li><img src="brands/firecrawl-wordmark.png" alt="Firecrawl" loading="lazy" /></li>
-        <li><img src="brands/dittoai_logo.jpeg" alt="Ditto AI" loading="lazy" /></li>
-        <li><img src="brands/weshare.webp" alt="WeShare" loading="lazy" /></li>
-        <li><img src="brands/moss.png" alt="Mossy Oak" loading="lazy" /></li>
-        <li><img src="brands/zo.png" alt="Zo" loading="lazy" /></li>
-        <li><img src="brands/gjsl.png" alt="Brand partner" loading="lazy" /></li>
-        <li><img src="brands/wtsl.png" alt="Brand partner" loading="lazy" /></li>
-        <li><img src="brands/vtsl.png" alt="Brand partner" loading="lazy" /></li>
-      </ul>
+      <div class="brands-viewport">
+        <ul class="brands-track">
+          <li><img src="brands/dashlane.png" alt="Dashlane" loading="lazy" /></li>
+          <li><img src="brands/nordvpn.png" alt="NordVPN" loading="lazy" /></li>
+          <li><img src="brands/dollar-shave-club.png" alt="Dollar Shave Club" loading="lazy" /></li>
+          <li><img src="brands/brilliant.png" alt="Brilliant" loading="lazy" /></li>
+          <li><img src="brands/wargaming.png" alt="Wargaming" loading="lazy" /></li>
+          <li><img src="brands/hawthorne.webp" alt="Hawthorne" loading="lazy" /></li>
+          <li><img src="brands/firecrawl-wordmark.png" alt="Firecrawl" loading="lazy" /></li>
+          <li><img src="brands/dittoai_logo.jpeg" alt="Ditto AI" loading="lazy" /></li>
+          <li><img src="brands/weshare.webp" alt="WeShare" loading="lazy" /></li>
+          <li><img src="brands/moss.png" alt="Mossy Oak" loading="lazy" /></li>
+          <li><img src="brands/zo.png" alt="Zo" loading="lazy" /></li>
+          <li><img src="brands/gjsl.png" alt="Brand partner" loading="lazy" /></li>
+          <li><img src="brands/wtsl.png" alt="Brand partner" loading="lazy" /></li>
+          <li><img src="brands/vtsl.png" alt="Brand partner" loading="lazy" /></li>
+        </ul>
+      </div>
     </div>
   </section>
 
