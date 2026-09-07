@@ -1,7 +1,7 @@
 const partnerBtn = document.getElementById("partner");
 if (partnerBtn) {
   partnerBtn.addEventListener("click", () => {
-    window.location.href = "mailto:hello@linsnexus.com?subject=Partnership";
+    window.location.href = "mailto:john@johnlins.com?subject=Partnership";
   });
 }
 
