@@ -1,6 +1,9 @@
-document.getElementById("partner").addEventListener("click", () => {
-  window.location.href = "mailto:hello@linsnexus.com?subject=Partnership";
-});
+const partnerBtn = document.getElementById("partner");
+if (partnerBtn) {
+  partnerBtn.addEventListener("click", () => {
+    window.location.href = "mailto:hello@linsnexus.com?subject=Partnership";
+  });
+}
 
 (() => {
   const toggle = document.getElementById("nav-toggle");

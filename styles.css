@@ -45,7 +45,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 2.25rem;
-  width: min(92vw, 42rem);
+  width: min(92vw, 56rem);
   opacity: 0;
   animation: fade-up 0.8s ease 0.15s forwards;
 }
@@ -346,6 +346,59 @@ header {
   opacity: 1;
 }
 
+.thesis {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 2rem 6.5rem;
+  background: #fff;
+}
+
+.thesis-page {
+  padding-top: 8rem;
+  min-height: 100vh;
+}
+
+.thesis-inner {
+  width: min(92vw, 40rem);
+  margin: 0 auto;
+}
+
+.thesis-eyebrow {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #000;
+  opacity: 0.4;
+  margin-bottom: 1rem;
+}
+
+.thesis h2 {
+  font-family: Inter, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 3.8vw, 2.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #000;
+}
+
+.thesis-body {
+  margin-top: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.thesis-body p {
+  font-family: Lora, Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  letter-spacing: 0.005em;
+  line-height: 1.7;
+  color: #1a1a1a;
+}
+
 .testimonials {
   position: relative;
   z-index: 1;
@@ -547,6 +600,14 @@ header {
   .brands {
     padding: 3.25rem 1.25rem 4rem;
     --brands-visible: 2;
+  }
+
+  .thesis {
+    padding: 3.5rem 1.25rem 5rem;
+  }
+
+  .thesis-page {
+    padding-top: 6.5rem;
   }
 
   .brands-track li {
